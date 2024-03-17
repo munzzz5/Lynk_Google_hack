@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h2>Feedback Details</h2>
+    <label for="suggestions">Suggestions:</label>
+    <textarea name="suggestions"></textarea>
+    <br>
+    <label for="effect">Effect:</label>
+    <textarea name="effect" required></textarea>
+    <br>
+    <label for="description">Problem/Pain Point:</label>
+    <textarea name="description" required></textarea>
+    <br>
+    <label for="tools">Tools:</label>
+    <input type="text" name="tools">
+    <br>
+    <label for="affected_areas">Affected Areas:</label>
+    <textarea name="affected_areas"></textarea>
+    <br>
+    <input type="checkbox" name="anonymous" id="anonymous">
+    <label for="anonymous">Submit anonymously</label>
+    <br>
+    <button type="submit">Submit Feedback</button>
+    <a href="{% url 'reset_step' %}" class="btn btn-secondary">Back to Step 1</a>
+
+</form>
+{% endblock %}

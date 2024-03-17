@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h2>Select a Category</h2>
+    <select name="category" required>
+        <option value="">--- Select One ---</option>
+        <option value="work">Work</option>
+        <option value="other">Other</option> <!-- Assuming there's an 'other' option -->
+    </select>
+    <br>
+    <button type="submit">Next</button>
+</form>
+{% endblock %}

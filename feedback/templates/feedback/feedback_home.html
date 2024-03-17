@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    /* Add this style to your CSS file or within a style block in base.html */
+    table {
+        width: 100%;
+        border-collapse: collapse; /* Collapse borders */
+    }
+    th, td {
+        border: 1px solid black; /* Add border to table headers and cells */
+        padding: 8px; /* Add some padding for content */
+        text-align: left; /* Align text to the left */
+    }
+    th {
+        background-color: #f2f2f2; /* Light grey background for headers */
+    }
+</style>
+    <h2>Submit New Feedback</h2>
+    <a href="{% url 'create_feedback' %}">Add Feedback</a>
+
+    <h2>Existing Feedback</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Topic</th>
+                <th>Department</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feedback in feedbacks %}
+                <tr>
+                    <td>{{ feedback.category }}</td>
+                    <td>{{ feedback.topic }}</td>
+                    <td>{{ feedback.department }}</td>
+                    <td>{{ feedback.description }}</td>
+                    <td>
+                        <a href="{% url 'edit_feedback' feedback.id %}">Edit</a> |
+                        <a href="{% url 'delete_feedback' feedback.id %}" onclick="return confirm('Are you sure?');">Delete</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No feedback submitted yet.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

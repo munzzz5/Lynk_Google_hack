@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <h2>Work Feedback Details</h2>
+    <label for="topic">Topic:</label>
+    <input type="text" name="topic" required>
+    <br>
+    <label for="department">Department:</label>
+    <select name="department" required>
+        <option value="">--- Select One ---</option>
+        <option value="it">IT</option>
+        <option value="hr">Human Resources</option>
+        <option value="finance">Finance</option>
+        <option value="marketing">Marketing</option>
+    </select>
+    <br>
+    <button type="submit">Next</button>
+    
+    </form><a href="{% url 'reset_step' %}" class="btn btn-secondary">Back to Step 1</a>
+
+{% endblock %}
