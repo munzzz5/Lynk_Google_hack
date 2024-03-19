@@ -22,7 +22,7 @@ def init_model():
     import pathlib
     import textwrap
     import google.generativeai as genai
-    api_key = 'AIzaSyDukMqqjIFaEUt3fmM5iKm8QEKlN4CvThI'
+    api_key = ''
 
     genai.configure(api_key=api_key)
 
